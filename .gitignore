@@ -16,7 +16,10 @@ build/
 .idea_modules/
 
 # Gradle
-*.gradle
+.gradle
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
