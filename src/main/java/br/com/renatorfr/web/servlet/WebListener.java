@@ -40,5 +40,4 @@ public class WebListener extends HttpServlet {
             output.close();
         }
     }
-
 }
