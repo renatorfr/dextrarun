@@ -1,12 +1,15 @@
 package br.com.renatorfr.web.common;
 
+import br.com.renatorfr.controller.TrainingSheetsController;
 import br.com.renatorfr.controller.test.TestController;
+
 import java.util.Arrays;
 import java.util.List;
 
 public enum TypeManager {
 
-    testController(TestController.class);
+    testController(TestController.class),
+    trainingSheetsController(TrainingSheetsController.class);
 
     private Class<?> type;
 

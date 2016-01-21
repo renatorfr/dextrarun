@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class Binder {
 
-    private static final String URI_REQUEST = "/done/(\\w+)/(\\w+)/?";
+    private static final String URI_REQUEST = "/api/(\\w+)/(\\w+)/?";
     private static final int TYPE = 1;
     private static final int TARGET = 2;
 

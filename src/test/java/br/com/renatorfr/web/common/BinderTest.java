@@ -13,28 +13,28 @@ public class BinderTest {
 
     @Test
     public void testEmptyParams() throws Exception {
-        Binder binder = new Binder("/dextrarun/testController/testEmptyParams");
+        Binder binder = new Binder("/api/testController/testEmptyParams");
         Object result = binder.invoke("");
         Assert.assertEquals("Invoke method testEmptyParams()", result.toString());
     }
 
     @Test
     public void testObjectParams() throws Exception {
-        Binder binder = new Binder("/dextrarun/testController/testObjectParams");
+        Binder binder = new Binder("/api/testController/testObjectParams");
         Object result = binder.invoke("{ id: 2, name: 'Dextra Run', phone: [123, 456], addr: { id: 1, addr: 'Addr' } }");
         Assert.assertEquals(this.createPersonEntity(), result);
     }
 
     @Test
     public void testArrayParams() throws Exception {
-        Binder binder = new Binder("/dextrarun/testController/testArrayParams");
+        Binder binder = new Binder("/api/testController/testArrayParams");
         Object result = binder.invoke("[{ id: 2, name: 'Dextra Run', phone: [123, 456], addr: { id: 1, addr: 'Addr' } }, { id: 1, addr: 'Addr' }]");
         Assert.assertEquals("21", result);
     }
 
     @Test
     public void testSimpleParam() throws Exception {
-        Binder binder = new Binder("/dextrarun/testController/testSimpleParam/");
+        Binder binder = new Binder("/api/testController/testSimpleParam/");
         Object result = binder.invoke("10");
         Assert.assertEquals(new Long(10), result);
     }
@@ -42,7 +42,7 @@ public class BinderTest {
     @Test
     @Ignore
     public void test() throws Exception {
-        Binder binder = new Binder("/dextrarun/negotiationController/saveNegotiation");
+        Binder binder = new Binder("/api/negotiationController/saveNegotiation");
         Object result = binder.invoke("{'id':'','modality':'INTERNAL','product':'WHEAT_MILL','origin':'BR','portId':'2','cropYear':'2013','operation':'BOUGHT','quantity':'200','execPeriod':'','unitType':'','payment':'','brokerage':'','comment':''}");
         Assert.assertEquals(null, result);
     }
