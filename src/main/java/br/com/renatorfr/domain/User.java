@@ -1,6 +1,6 @@
 package br.com.renatorfr.domain;
 
-public class User {
+public abstract class User {
     private final Long id;
     private final String name;
     private final UserType type;
