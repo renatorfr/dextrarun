@@ -1,14 +1,16 @@
-package br.com.renatorfr;
+package br.com.renatorfr.dextrarun;
 
 import spark.Request;
 import spark.Response;
 import spark.Route;
+import spark.servlet.SparkApplication;
 
-import static br.com.renatorfr.controller.ControllersEnum.TRAINING_CONTROLLER;
+import static br.com.renatorfr.dextrarun.controller.ControllersEnum.TRAINING_CONTROLLER;
 import static spark.Spark.get;
 
-public class Main {
-    public static void main(String[] args) {
+public class Main implements SparkApplication {
+    @Override
+    public void init() {
         get("/", new Route() {
             @Override
             public Object handle(Request request, Response response) throws Exception {

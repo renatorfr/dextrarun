@@ -1,6 +1,6 @@
-package br.com.renatorfr.controller;
+package br.com.renatorfr.dextrarun.controller;
 
-import br.com.renatorfr.viewmodel.TrainingViewModel;
+import br.com.renatorfr.dextrarun.viewmodel.TrainingViewModel;
 import spark.Request;
 
 public class TrainingController implements Controller {

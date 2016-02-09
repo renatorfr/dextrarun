@@ -1,4 +1,4 @@
-package br.com.renatorfr.controller;
+package br.com.renatorfr.dextrarun.controller;
 
 public enum ControllersEnum {
     TRAINING_CONTROLLER(TrainingController.class);

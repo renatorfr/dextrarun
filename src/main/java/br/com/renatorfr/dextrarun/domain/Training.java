@@ -1,4 +1,4 @@
-package br.com.renatorfr.domain;
+package br.com.renatorfr.dextrarun.domain;
 
 import java.util.Date;
 import java.util.List;

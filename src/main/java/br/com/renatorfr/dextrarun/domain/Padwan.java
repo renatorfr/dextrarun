@@ -1,4 +1,4 @@
-package br.com.renatorfr.domain;
+package br.com.renatorfr.dextrarun.domain;
 
 public class Padwan extends User {
     public Padwan(String name) {

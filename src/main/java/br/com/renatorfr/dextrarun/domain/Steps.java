@@ -1,4 +1,4 @@
-package br.com.renatorfr.domain;
+package br.com.renatorfr.dextrarun.domain;
 
 public class Steps {
     private final Integer duration;
