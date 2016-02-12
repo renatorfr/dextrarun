@@ -14,6 +14,18 @@ public abstract class User {
         this.name = name;
         this.type = type;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public UserType getType() {
+        return type;
+    }
 }
 
 enum UserType {
