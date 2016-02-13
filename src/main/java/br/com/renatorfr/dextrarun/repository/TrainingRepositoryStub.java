@@ -7,12 +7,16 @@ import br.com.renatorfr.dextrarun.domain.Training;
 import br.com.renatorfr.dextrarun.repository.interfaces.TrainingRepository;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class TrainingRepositoryStub implements TrainingRepository {
     @Override
     public Training getTraining(Long id) {
         JediMaster jediMaster = new JediMaster("Obi Wan");
         Padwan padwan = new Padwan("Anakin");
-        return new Training(id, jediMaster, padwan, "Treino 1", new ArrayList<Steps>());
+        Date date = Calendar.getInstance().getTime();
+
+        return new Training(id, jediMaster, padwan, "Treino 1", new ArrayList<Steps>(), date);
     }
 }

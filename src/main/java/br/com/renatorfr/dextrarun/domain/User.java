@@ -6,7 +6,7 @@ public abstract class User {
     private final UserType type;
 
     public User(String name, UserType type) {
-        this(null, name, type);
+        this(0L, name, type);
     }
 
     public User(Long id, String name, UserType type) {

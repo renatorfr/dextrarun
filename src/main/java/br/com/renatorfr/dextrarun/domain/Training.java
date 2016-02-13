@@ -1,6 +1,5 @@
 package br.com.renatorfr.dextrarun.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +12,7 @@ public class Training {
     private final Date dateCreated;
 
     public Training(JediMaster jediMaster, Padwan padwan, String name, List<Steps> trainingSteps) {
-        this(null, jediMaster, padwan, name, trainingSteps, null);
+        this(0L, jediMaster, padwan, name, trainingSteps, new Date());
     }
 
     public Training(Long id, JediMaster jediMaster, Padwan padwan, String name, List<Steps> trainingSteps, Date dateCreated) {
@@ -23,10 +22,6 @@ public class Training {
         this.name = name;
         this.trainingSteps = trainingSteps;
         this.dateCreated = dateCreated;
-    }
-
-    public Training(Long id, JediMaster jediMaster, Padwan padwan, String name, ArrayList<Steps> trainingSteps) {
-        this(id, jediMaster, padwan, name, trainingSteps, null);
     }
 
     public Long getId() {

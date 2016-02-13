@@ -10,4 +10,16 @@ public class Steps {
         this.description = description;
         this.speed = speed;
     }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getSpeed() {
+        return speed;
+    }
 }
