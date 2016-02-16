@@ -13,7 +13,8 @@ import com.google.appengine.api.users.User;
 
 @Api(name = "dextraRunApi",
      version = "v1",
-     clientIds = {Constants.WEB_CLIENT_ID},
+     clientIds = {Constants.WEB_CLIENT_ID, 
+       						com.google.api.server.spi.Constant.API_EXPLORER_CLIENT_ID},
      namespace = @ApiNamespace(ownerDomain = "dextrarun.renatorfr.com.br",
                                ownerName = "renatorfr",
                                packagePath = ""))
