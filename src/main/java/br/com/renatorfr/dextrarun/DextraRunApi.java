@@ -4,6 +4,7 @@ import br.com.renatorfr.dextrarun.domain.Training;
 import br.com.renatorfr.dextrarun.repository.TrainingRepositoryStub;
 import br.com.renatorfr.dextrarun.viewmodel.TrainingRequest;
 import br.com.renatorfr.dextrarun.viewmodel.TrainingResponse;
+import com.google.api.server.spi.Constant;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -13,7 +14,8 @@ import com.google.appengine.api.users.User;
 
 @Api(name = "dextraRunApi",
      version = "v1",
-     clientIds = {Constants.WEB_CLIENT_ID},
+     clientIds = {Constants.WEB_CLIENT_ID,
+             Constant.API_EXPLORER_CLIENT_ID},
      namespace = @ApiNamespace(ownerDomain = "dextrarun.renatorfr.com.br",
                                ownerName = "renatorfr",
                                packagePath = ""))
