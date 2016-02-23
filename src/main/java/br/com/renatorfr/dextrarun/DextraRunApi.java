@@ -1,7 +1,9 @@
 package br.com.renatorfr.dextrarun;
 
 import br.com.renatorfr.dextrarun.domain.Training;
+import br.com.renatorfr.dextrarun.repository.TrainingRepositoryObjectify;
 import br.com.renatorfr.dextrarun.repository.TrainingRepositoryStub;
+import br.com.renatorfr.dextrarun.repository.interfaces.TrainingRepository;
 import br.com.renatorfr.dextrarun.viewmodel.TrainingRequest;
 import br.com.renatorfr.dextrarun.viewmodel.TrainingResponse;
 import com.google.api.server.spi.Constant;
@@ -24,7 +26,7 @@ public class DextraRunApi {
     public TrainingResponse getTraining(@Named("trainingId") Long id, User user) throws OAuthRequestException {
         validate(user);
 
-        Training training = new TrainingRepositoryStub().getTraining(id);
+        Training training = new TrainingRepositoryStub().get(id);
 
         return new TrainingResponse(training);
     }
@@ -33,8 +35,11 @@ public class DextraRunApi {
     public TrainingResponse addTraining(@Named("name") String name, @Named("jediMasterId") Long jediMaster, @Named("padwanId") Long padwan, User user) throws OAuthRequestException {
         validate(user);
 
-        TrainingRequest trainingRequest = new TrainingRequest(0L, jediMaster, padwan, name);
+        TrainingRequest trainingRequest = new TrainingRequest(null, jediMaster, padwan, name);
         Training training = trainingRequest.createTraining();
+
+        TrainingRepository trainingRepository = new TrainingRepositoryObjectify();
+        trainingRepository.save(training);
 
         return new TrainingResponse(training);
     }

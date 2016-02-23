@@ -1,18 +1,26 @@
 package br.com.renatorfr.dextrarun.domain;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Training {
-    private final Long id;
-    private final JediMaster jediMaster;
-    private final Padwan padwan;
-    private final String name;
-    private final List<Steps> trainingSteps;
-    private final Date dateCreated;
+    @Id
+    private Long id;
+    private JediMaster jediMaster;
+    private Padwan padwan;
+    private String name;
+    private List<Steps> trainingSteps;
+    private Date dateCreated;
+
+    private Training() {
+    }
 
     public Training(JediMaster jediMaster, Padwan padwan, String name, List<Steps> trainingSteps) {
-        this(0L, jediMaster, padwan, name, trainingSteps, new Date());
+        this(null, jediMaster, padwan, name, trainingSteps, new Date());
     }
 
     public Training(Long id, JediMaster jediMaster, Padwan padwan, String name, List<Steps> trainingSteps, Date dateCreated) {

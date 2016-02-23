@@ -1,12 +1,20 @@
 package br.com.renatorfr.dextrarun.domain;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public abstract class User {
-    private final Long id;
-    private final String name;
-    private final UserType type;
+    @Id
+    private Long id;
+    private String name;
+    private UserType type;
+
+    private User() {
+    }
 
     public User(String name, UserType type) {
-        this(0L, name, type);
+        this(null, name, type);
     }
 
     public User(Long id, String name, UserType type) {

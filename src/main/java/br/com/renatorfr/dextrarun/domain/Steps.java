@@ -1,9 +1,18 @@
 package br.com.renatorfr.dextrarun.domain;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class Steps {
-    private final Integer duration;
-    private final String description;
-    private final String speed;
+    @Id
+    private Long id;
+    private Integer duration;
+    private String description;
+    private String speed;
+
+    private Steps() {
+    }
 
     public Steps(Integer duration, String description, String speed) {
         this.duration = duration;
