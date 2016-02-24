@@ -19,6 +19,10 @@ public class Training {
     private Training() {
     }
 
+    public Training(Long id, JediMaster jediMaster, Padwan padwan, String name) {
+        this(id, jediMaster, padwan, name, null, null);
+    }
+
     public Training(JediMaster jediMaster, Padwan padwan, String name, List<Steps> trainingSteps) {
         this(null, jediMaster, padwan, name, trainingSteps, new Date());
     }

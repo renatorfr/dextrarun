@@ -2,7 +2,6 @@ package br.com.renatorfr.dextrarun;
 
 import br.com.renatorfr.dextrarun.domain.Training;
 import br.com.renatorfr.dextrarun.repository.TrainingRepositoryObjectify;
-import br.com.renatorfr.dextrarun.repository.TrainingRepositoryStub;
 import br.com.renatorfr.dextrarun.repository.interfaces.TrainingRepository;
 import br.com.renatorfr.dextrarun.viewmodel.TrainingRequest;
 import br.com.renatorfr.dextrarun.viewmodel.TrainingResponse;
@@ -26,7 +25,7 @@ public class DextraRunApi {
     public TrainingResponse getTraining(@Named("trainingId") Long id, User user) throws OAuthRequestException {
         validate(user);
 
-        Training training = new TrainingRepositoryStub().get(id);
+        Training training = new TrainingRepositoryObjectify().get(id);
 
         return new TrainingResponse(training);
     }

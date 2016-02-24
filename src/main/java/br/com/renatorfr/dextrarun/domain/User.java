@@ -10,7 +10,7 @@ public abstract class User {
     private String name;
     private UserType type;
 
-    private User() {
+    public User() {
     }
 
     public User(String name, UserType type) {

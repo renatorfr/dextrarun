@@ -1,6 +1,10 @@
 package br.com.renatorfr.dextrarun.domain;
 
 public class Padwan extends User {
+    private Padwan() {
+        super();
+    }
+
     public Padwan(String name) {
         super(name, UserType.PADWAN);
     }

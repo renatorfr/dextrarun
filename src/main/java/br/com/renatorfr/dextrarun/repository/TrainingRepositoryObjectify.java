@@ -9,7 +9,9 @@ public class TrainingRepositoryObjectify implements TrainingRepository {
 
     @Override
     public Training get(Long id) {
-        throw new UnsupportedOperationException("#get()");
+        Objectify ofy = ObjectifyHelper.ofy();
+
+        return ofy.load().type(Training.class).id(id).safe();
     }
 
     @Override
