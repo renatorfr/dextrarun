@@ -13,6 +13,9 @@ import com.google.api.server.spi.config.Named;
 import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
 
+import java.util.HashMap;
+import java.util.List;
+
 @Api(name = "dextraRunApi",
      version = "v1",
      clientIds = {Constants.WEB_CLIENT_ID,
@@ -31,10 +34,14 @@ public class DextraRunApi {
     }
 
     @ApiMethod(httpMethod = ApiMethod.HttpMethod.POST)
-    public TrainingResponse addTraining(@Named("name") String name, @Named("jediMasterId") Long jediMaster, @Named("padwanId") Long padwan, User user) throws OAuthRequestException {
+    public TrainingResponse addTraining(@Named("name") String name,
+                                        @Named("jediMasterId") Long jediMaster,
+                                        @Named("padwanId") Long padwan,
+                                        @Named("steps") List<<String, String>> steps,
+                                        User user) throws OAuthRequestException {
         validate(user);
 
-        TrainingRequest trainingRequest = new TrainingRequest(null, jediMaster, padwan, name);
+        TrainingRequest trainingRequest = new TrainingRequest(null, jediMaster, padwan, name, steps);
         Training training = trainingRequest.createTraining();
 
         TrainingRepository trainingRepository = new TrainingRepositoryObjectify();

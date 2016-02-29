@@ -2,7 +2,7 @@ package br.com.renatorfr.dextrarun.repository;
 
 import br.com.renatorfr.dextrarun.domain.JediMaster;
 import br.com.renatorfr.dextrarun.domain.Padwan;
-import br.com.renatorfr.dextrarun.domain.Steps;
+import br.com.renatorfr.dextrarun.domain.Step;
 import br.com.renatorfr.dextrarun.domain.Training;
 import br.com.renatorfr.dextrarun.repository.interfaces.TrainingRepository;
 
@@ -17,7 +17,7 @@ public class TrainingRepositoryStub implements TrainingRepository {
         Padwan padwan = new Padwan("Anakin");
         Date date = Calendar.getInstance().getTime();
 
-        return new Training(id, jediMaster, padwan, "Treino 1", new ArrayList<Steps>(), date);
+        return new Training(id, jediMaster, padwan, "Treino 1", new ArrayList<Step>(), date);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package br.com.renatorfr.dextrarun.infra;
 
-import br.com.renatorfr.dextrarun.domain.Steps;
+import br.com.renatorfr.dextrarun.domain.Step;
 import br.com.renatorfr.dextrarun.domain.Training;
 import br.com.renatorfr.dextrarun.domain.User;
 import com.googlecode.objectify.Objectify;
@@ -11,7 +11,7 @@ public class ObjectifyHelper {
     static {
         ObjectifyService.register(Training.class);
         ObjectifyService.register(User.class);
-        ObjectifyService.register(Steps.class);
+        ObjectifyService.register(Step.class);
     }
 
     public static Objectify ofy() {

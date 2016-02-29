@@ -13,7 +13,7 @@ public class Training {
     private JediMaster jediMaster;
     private Padwan padwan;
     private String name;
-    private List<Steps> trainingSteps;
+    private List<Step> trainingSteps;
     private Date dateCreated;
 
     private Training() {
@@ -23,11 +23,11 @@ public class Training {
         this(id, jediMaster, padwan, name, null, null);
     }
 
-    public Training(JediMaster jediMaster, Padwan padwan, String name, List<Steps> trainingSteps) {
+    public Training(JediMaster jediMaster, Padwan padwan, String name, List<Step> trainingSteps) {
         this(null, jediMaster, padwan, name, trainingSteps, new Date());
     }
 
-    public Training(Long id, JediMaster jediMaster, Padwan padwan, String name, List<Steps> trainingSteps, Date dateCreated) {
+    public Training(Long id, JediMaster jediMaster, Padwan padwan, String name, List<Step> trainingSteps, Date dateCreated) {
         this.id = id;
         this.jediMaster = jediMaster;
         this.padwan = padwan;
@@ -52,7 +52,7 @@ public class Training {
         return name;
     }
 
-    public List<Steps> getTrainingSteps() {
+    public List<Step> getTrainingSteps() {
         return trainingSteps;
     }
 
