@@ -37,11 +37,10 @@ public class DextraRunApi {
     public TrainingResponse addTraining(@Named("name") String name,
                                         @Named("jediMasterId") Long jediMaster,
                                         @Named("padwanId") Long padwan,
-                                        @Named("steps") List<<String, String>> steps,
                                         User user) throws OAuthRequestException {
         validate(user);
 
-        TrainingRequest trainingRequest = new TrainingRequest(null, jediMaster, padwan, name, steps);
+        TrainingRequest trainingRequest = new TrainingRequest(null, jediMaster, padwan, name, null);
         Training training = trainingRequest.createTraining();
 
         TrainingRepository trainingRepository = new TrainingRepositoryObjectify();
