@@ -14,9 +14,9 @@ public class TrainingRequest {
     private final Long jediMaster;
     private final Long padwan;
     private final String name;
-    private final List<HashMap<String, String>> steps;
+    private final List<Step> steps;
 
-    public TrainingRequest(Long id, Long jediMaster, Long padwan, String name, List<HashMap<String, String>> steps) {
+    public TrainingRequest(Long id, Long jediMaster, Long padwan, String name, List<Step> steps) {
         this.id = id;
         this.jediMaster = jediMaster;
         this.padwan = padwan;
@@ -40,7 +40,7 @@ public class TrainingRequest {
         return name;
     }
 
-    public List<HashMap<String, String>> getSteps() {
+    public List<Step> getSteps() {
         return steps;
     }
 
@@ -48,11 +48,11 @@ public class TrainingRequest {
         JediMaster jediMaster = new JediMaster(this.jediMaster, "Jedi Master " + this.jediMaster);
         Padwan padwan = new Padwan(this.padwan, "Padwan " + this.padwan);
 
-        List<Step> stepsList = new ArrayList<Step>();
-        for (HashMap<String, String> step : steps) {
-            stepsList.add(new Step(step));
-        }
+//        List<Step> stepsList = new ArrayList<Step>();
+//        for (HashMap<String, String> step : steps) {
+//            stepsList.add(new Step(step));
+//        }
 
-        return new Training(jediMaster, padwan, name, stepsList);
+        return new Training(jediMaster, padwan, name, steps);
     }
 }

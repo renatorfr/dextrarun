@@ -49,6 +49,19 @@ public class DextraRunApi {
 
         return new TrainingResponse(training);
     }
+  
+    @ApiMethod(httpMethod = ApiMethod.HttpMethod.POST)
+    public TrainingResponse saveTraining(TrainingRequest trainingRequest,
+                                        User user) throws OAuthRequestException {
+        validate(user);
+
+        Training training = trainingRequest.createTraining();
+
+        TrainingRepository trainingRepository = new TrainingRepositoryObjectify();
+        trainingRepository.save(training);
+
+        return new TrainingResponse(training);
+    }
 
     private void validate(User user) throws OAuthRequestException {
         if (user == null) {
