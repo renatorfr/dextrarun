@@ -3,8 +3,7 @@ package br.com.renatorfr.dextrarun;
 import br.com.renatorfr.dextrarun.domain.Training;
 import br.com.renatorfr.dextrarun.repository.TrainingRepositoryObjectify;
 import br.com.renatorfr.dextrarun.repository.interfaces.TrainingRepository;
-import br.com.renatorfr.dextrarun.viewmodel.TrainingRequest;
-import br.com.renatorfr.dextrarun.viewmodel.TrainingResponse;
+import br.com.renatorfr.dextrarun.viewmodel.TrainingVM;
 import com.google.api.server.spi.Constant;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
@@ -12,9 +11,6 @@ import com.google.api.server.spi.config.ApiNamespace;
 import com.google.api.server.spi.config.Named;
 import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
-
-import java.util.HashMap;
-import java.util.List;
 
 @Api(name = "dextraRunApi",
      version = "v1",
@@ -25,41 +21,41 @@ import java.util.List;
                                packagePath = ""))
 public class DextraRunApi {
     @ApiMethod()
-    public TrainingResponse getTraining(@Named("trainingId") Long id, User user) throws OAuthRequestException {
+    public TrainingVM getTraining(@Named("trainingId") Long id, User user) throws OAuthRequestException {
         validate(user);
 
         Training training = new TrainingRepositoryObjectify().get(id);
 
-        return new TrainingResponse(training);
+        return new TrainingVM(training);
     }
 
     @ApiMethod(httpMethod = ApiMethod.HttpMethod.POST)
-    public TrainingResponse addTraining(@Named("name") String name,
-                                        @Named("jediMasterId") Long jediMaster,
-                                        @Named("padwanId") Long padwan,
-                                        User user) throws OAuthRequestException {
+    public TrainingVM addTraining(@Named("name") String name,
+                                  @Named("jediMasterId") Long jediMaster,
+                                  @Named("padwanId") Long padwan,
+                                  User user) throws OAuthRequestException {
         validate(user);
 
-        TrainingRequest trainingRequest = new TrainingRequest(null, jediMaster, padwan, name, null);
-        Training training = trainingRequest.createTraining();
+        TrainingVM trainingVM = new TrainingVM(null, jediMaster, padwan, name, null);
+        Training training = trainingVM.createTraining();
 
         TrainingRepository trainingRepository = new TrainingRepositoryObjectify();
         trainingRepository.save(training);
 
-        return new TrainingResponse(training);
+        return new TrainingVM(training);
     }
-  
+
     @ApiMethod(httpMethod = ApiMethod.HttpMethod.POST)
-    public TrainingResponse saveTraining(TrainingRequest trainingRequest,
-                                        User user) throws OAuthRequestException {
+    public TrainingVM saveTraining(TrainingVM trainingVM,
+                                   User user) throws OAuthRequestException {
         validate(user);
 
-        Training training = trainingRequest.createTraining();
+        Training training = trainingVM.createTraining();
 
         TrainingRepository trainingRepository = new TrainingRepositoryObjectify();
         trainingRepository.save(training);
 
-        return new TrainingResponse(training);
+        return new TrainingVM(training);
     }
 
     private void validate(User user) throws OAuthRequestException {

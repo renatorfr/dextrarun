@@ -13,26 +13,22 @@ public class Training {
     private JediMaster jediMaster;
     private Padwan padwan;
     private String name;
-    private List<Step> trainingSteps;
+    private List<Step> steps;
     private Date dateCreated;
 
     private Training() {
     }
 
-    public Training(Long id, JediMaster jediMaster, Padwan padwan, String name) {
-        this(id, jediMaster, padwan, name, null, null);
+    public Training(Long id, JediMaster jediMaster, Padwan padwan, String name, List<Step> steps) {
+        this(id, jediMaster, padwan, name, steps, new Date());
     }
 
-    public Training(JediMaster jediMaster, Padwan padwan, String name, List<Step> trainingSteps) {
-        this(null, jediMaster, padwan, name, trainingSteps, new Date());
-    }
-
-    public Training(Long id, JediMaster jediMaster, Padwan padwan, String name, List<Step> trainingSteps, Date dateCreated) {
+    public Training(Long id, JediMaster jediMaster, Padwan padwan, String name, List<Step> steps, Date dateCreated) {
         this.id = id;
         this.jediMaster = jediMaster;
         this.padwan = padwan;
         this.name = name;
-        this.trainingSteps = trainingSteps;
+        this.steps = steps;
         this.dateCreated = dateCreated;
     }
 
@@ -52,8 +48,8 @@ public class Training {
         return name;
     }
 
-    public List<Step> getTrainingSteps() {
-        return trainingSteps;
+    public List<Step> getSteps() {
+        return steps;
     }
 
     public Date getDateCreated() {
