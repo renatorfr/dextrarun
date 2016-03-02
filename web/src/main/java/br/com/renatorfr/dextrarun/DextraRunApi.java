@@ -13,12 +13,11 @@ import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
 
 @Api(name = "dextraRunApi",
-     version = "v1",
-     clientIds = {Constants.WEB_CLIENT_ID,
-             Constant.API_EXPLORER_CLIENT_ID},
-     namespace = @ApiNamespace(ownerDomain = "dextrarun.renatorfr.com.br",
-                               ownerName = "renatorfr",
-                               packagePath = ""))
+        version = "v1",
+        clientIds = { Constants.WEB_CLIENT_ID, Constant.API_EXPLORER_CLIENT_ID },
+        namespace = @ApiNamespace(ownerDomain = "dextrarun.renatorfr.com.br",
+                ownerName = "renatorfr",
+                packagePath = ""))
 public class DextraRunApi {
     @ApiMethod()
     public TrainingVM getTraining(@Named("trainingId") Long id, User user) throws OAuthRequestException {
@@ -30,10 +29,8 @@ public class DextraRunApi {
     }
 
     @ApiMethod(httpMethod = ApiMethod.HttpMethod.POST)
-    public TrainingVM addTraining(@Named("name") String name,
-                                  @Named("jediMasterId") Long jediMaster,
-                                  @Named("padwanId") Long padwan,
-                                  User user) throws OAuthRequestException {
+    public TrainingVM addTraining(@Named("name") String name, @Named("jediMasterId") Long jediMaster, @Named("padwanId") Long padwan, User user)
+            throws OAuthRequestException {
         validate(user);
 
         TrainingVM trainingVM = new TrainingVM(null, jediMaster, padwan, name, null);
@@ -46,16 +43,13 @@ public class DextraRunApi {
     }
 
     @ApiMethod(httpMethod = ApiMethod.HttpMethod.POST)
-    public TrainingVM saveTraining(TrainingVM trainingVM,
-                                   User user) throws OAuthRequestException {
+    public Training saveTraining(Training training, User user) throws OAuthRequestException {
         validate(user);
-
-        Training training = trainingVM.createTraining();
 
         TrainingRepository trainingRepository = new TrainingRepositoryObjectify();
         trainingRepository.save(training);
 
-        return new TrainingVM(training);
+        return training;
     }
 
     private void validate(User user) throws OAuthRequestException {

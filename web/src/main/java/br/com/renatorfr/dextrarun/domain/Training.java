@@ -1,5 +1,7 @@
 package br.com.renatorfr.dextrarun.domain;
 
+import br.com.renatorfr.dextrarun.transformers.TrainingTransformer;
+import com.google.api.server.spi.config.ApiTransformer;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
@@ -7,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@ApiTransformer(TrainingTransformer.class)
 public class Training {
     @Id
     private Long id;
