@@ -42,20 +42,36 @@ public class TrainingVM {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getJediMaster() {
         return jediMaster;
+    }
+
+    public void setJediMaster(Long jediMaster) {
+        this.jediMaster = jediMaster;
     }
 
     public Long getPadwan() {
         return padwan;
     }
 
+    public void setPadwan(Long padwan) {
+        this.padwan = padwan;
+    }
+
     public String getName() {
         return name;
     }
 
-    public List<StepVM> getStepsVM() {
-        return steps;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSteps(List<StepVM> steps) {
+        this.steps = steps;
     }
 
     public Training createTraining() {
