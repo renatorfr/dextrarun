@@ -1,6 +1,9 @@
 package br.com.renatorfr.dextrarun.tests.integration;
 
 import br.com.renatorfr.dextrarun.DextraRunApi;
+import br.com.renatorfr.dextrarun.domain.JediMaster;
+import br.com.renatorfr.dextrarun.domain.Padwan;
+import br.com.renatorfr.dextrarun.domain.Training;
 import br.com.renatorfr.dextrarun.viewmodel.TrainingVM;
 import com.google.appengine.api.users.User;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
@@ -28,6 +31,8 @@ public class DextraRunApiTest {
         obf = ObjectifyService.begin();
 
         this.user = new User("example@example.com", "authDomain");
+
+        createTraining();
     }
 
     @After
@@ -41,5 +46,11 @@ public class DextraRunApiTest {
         TrainingVM training = new DextraRunApi().getTraining(5629499534213120L, user);
 
         assertEquals("Treino 1", training.getName());
+    }
+
+    private void createTraining() {
+        JediMaster jediMaster = new JediMaster("Jedi Master 1");
+        Padwan padwan = new Padwan("Padwan 1");
+        Training training = new Training(null, jediMaster, padwan, "Treino 1", null);
     }
 }
