@@ -49,26 +49,22 @@ public class DextraRunApiTest {
 
     @Test
     public void testSaveTraining() throws Exception {
-        JediMaster jediMaster = new JediMaster("Jedi Master 1");
-        Padwan padwan = new Padwan("Padwan 1");
-        Training training = new Training(null, jediMaster, padwan, "Treino 1", null);
-
-        training = new DextraRunApi().saveTraining(training, user);
-
-        assertNotNull(training.getId());
+        this.training = new DextraRunApi().saveTraining(this.training, user);
+        assertNotNull(this.training.getId());
     }
 
     @Test
     public void testGetTraining() throws Exception {
-        TrainingVM training = new DextraRunApi().getTraining(this.training.getId(), user);
+        testSaveTraining();
 
+        TrainingVM training = new DextraRunApi().getTraining(this.training.getId(), user);
         assertEquals(this.training.getName(), training.getName());
     }
 
     private void createTraining() throws OAuthRequestException {
         JediMaster jediMaster = new JediMaster("Jedi Master 1");
         Padwan padwan = new Padwan("Padwan 1");
-        Training training = new Training(null, jediMaster, padwan, "Treino 1", new ArrayList<Step>());
+        this.training = new Training(null, jediMaster, padwan, "Treino 1", new ArrayList<Step>());
 
         System.out.println("Training: " + this.training.getName() + " | " + this.training.getId());
     }

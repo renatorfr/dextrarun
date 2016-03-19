@@ -11,7 +11,7 @@
     <properties>
         <app.id>dextra-run</app.id>
         <app.version>1</app.version>
-        <appengine.version>1.9.32</appengine.version>
+        <appengine.version>1.9.34</appengine.version>
         <gcloud.plugin.version>2.0.9.95.v20160203</gcloud.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
@@ -47,7 +47,7 @@
         <dependency>
             <groupId>com.googlecode.objectify</groupId>
             <artifactId>objectify</artifactId>
-            <version>5.1.10</version>
+            <version>5.1.12</version>
         </dependency>
 
         <!-- Test Dependencies -->
