@@ -1,8 +1,3 @@
-$(document).ready(function() {
-    initApp();
-    $('a[name="create"]').click(trainingCreateClick);
-});
-
 // Firebase config.
 var config = {
     apiKey: "AIzaSyCQ4JFDMk3bYTxh9IeCpqLowjuYRldn9sw",
@@ -17,7 +12,7 @@ var auth = app.auth();
 var database = app.database;
 
 // Verify if user is signed in
-initApp = function() {
+function initApp() {
     auth.onAuthStateChanged(function(user) {
         if (user) {
             // User is signed in.
@@ -31,7 +26,12 @@ initApp = function() {
     });
 };
 
-trainingCreateClick = function() {
+function trainingCreateClick() {
     $('#training-new').toggle();
     return false;
 };
+
+$(window).load(function() {
+    initApp();
+    $('a[name="create"]').click(trainingCreateClick);
+});
