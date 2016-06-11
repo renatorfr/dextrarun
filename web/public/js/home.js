@@ -1,37 +1,22 @@
 // Firebase config.
 var config = {
-    'authDomain': 'dextra-run.firebaseapp.com',
-    'apiKey': 'AIzaSyCQ4JFDMk3bYTxh9IeCpqLowjuYRldn9sw',
+    apiKey: "AIzaSyCQ4JFDMk3bYTxh9IeCpqLowjuYRldn9sw",
+    authDomain: "dextra-run.firebaseapp.com",
+    databaseURL: "https://dextra-run.firebaseio.com",
+    storageBucket: "dextra-run.appspot.com"
 };
 
-// Initialize the FirebaseUI Widget using Firebase.
+// Initialize the Firebase.
 var app = firebase.initializeApp(config);
 var auth = app.auth();
+var database = firebase.database;
 
 // Verify if user is signed in
 initApp = function() {
     auth.onAuthStateChanged(function(user) {
         if (user) {
             // User is signed in.
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var uid = user.uid;
-            var providerData = user.providerData;
-            user.getToken().then(function(accessToken) {
-                document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
-                document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-                document.getElementById('quickstart-account-details').textContent = JSON.stringify({
-                    displayName: displayName,
-                    email: email,
-                    emailVerified: emailVerified,
-                    photoURL: photoURL,
-                    uid: uid,
-                    accessToken: accessToken,
-                    providerData: providerData
-                }, null, '  ');
-            });
+            setUserInfo(user);
         } else {
             // User is signed out.
             window.location.replace('login.html');
@@ -43,4 +28,16 @@ initApp = function() {
 
 window.onload = function() {
     initApp()
+};
+
+setUserInfo = function(user) {
+    var displayName = user.displayName;
+    var email = user.email;
+    var photoURL = user.photoURL;
+
+    user.getToken().then(function(accessToken) {
+        $('#user-info [name="photo"]').attr('src', photoURL);
+        $('#user-info [name="name"]').html(displayName);
+        $('#user-info [name="email"]').html(email);
+    }, null, '  ');
 };

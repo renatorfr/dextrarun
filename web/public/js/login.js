@@ -20,3 +20,19 @@ var ui = new firebaseui.auth.AuthUI(auth);
 
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
+
+// Verify if user is signed in
+initApp = function() {
+    auth.onAuthStateChanged(function(user) {
+        if (user) {
+            // User is signed in.
+            window.location.replace('home.html');
+        }
+    }, function(error) {
+        console.log(error);
+    });
+};
+
+window.onload = function() {
+    initApp()
+};

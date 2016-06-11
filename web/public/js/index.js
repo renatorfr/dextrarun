@@ -4,7 +4,7 @@ var config = {
     'apiKey': 'AIzaSyCQ4JFDMk3bYTxh9IeCpqLowjuYRldn9sw',
 };
 
-// Initialize the FirebaseUI Widget using Firebase.
+// Initialize the Firebase.
 var app = firebase.initializeApp(config);
 var auth = app.auth();
 
