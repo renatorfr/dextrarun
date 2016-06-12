@@ -12,12 +12,9 @@ var auth = app.auth();
 var database = app.database;
 
 // Verify if user is signed in
-function initApp() {
+initApp = function() {
     auth.onAuthStateChanged(function(user) {
-        if (user) {
-            // User is signed in.
-            setUserInfo(user);
-        } else {
+        if (!user) {
             // User is signed out.
             window.location.replace('login.html');
         }
@@ -26,12 +23,42 @@ function initApp() {
     });
 };
 
-function trainingCreateClick() {
-    $('#training-new').toggle();
-    return false;
+window.onload = function() {
+    initApp()
 };
 
-$(window).load(function() {
-    initApp();
-    $('a[name="create"]').click(trainingCreateClick);
-});
+setUserInfo = function(user) {
+    var displayName = user.displayName;
+    var email = user.email;
+    var photoURL = user.photoURL;
+
+    user.getToken().then(function(accessToken) {
+        $('#user-info [name="photo"]').attr('src', photoURL);
+        $('#user-info [name="name"]').html(displayName);
+        $('#user-info [name="email"]').html(email);
+    }, null, '  ');
+};
+
+trainingCreateClick = function() {
+    $('#training-new').toggle();
+}
+
+trainingSave = function() {
+    var userId = firebase.auth().currentUser.uid;
+    var trainer = $('#training-new input[name="trainer"]').val();
+    var name = $('#training-new input[name="name"]').val();
+    var steps = {};
+    $('#training-new input[name|="step"]').each(function() {
+        steps[$(this).data('field')] = $(this).val();
+    });
+
+    writeTrainingData(userId, trainer, name, JSON.stringify(steps));
+}
+
+writeTrainingData = function(userId, trainer, name, steps) {
+    firebase.database().ref('trainings/' + userId).set({
+        trainer: trainer,
+        name: name,
+        steps: steps
+    });
+}

@@ -7,9 +7,9 @@
     <script src="https://www.gstatic.com/firebasejs/ui/0.4.0/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/0.4.0/firebase-ui-auth.css" />
 
-    <script src="../js/trainings.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+
+    <script src="../js/trainings.js"></script>
 
     <meta charset="utf-8">
     <title>Dextra Run</title>
@@ -25,15 +25,19 @@
     </div>
 
     <div id="body-main">
-        <a name="create" href="">Create training</a>
+        <a name="create" href="" onclick="trainingCreateClick(); return false;">Create training</a>
         <div id="training-new" style="display: none;">
-            <input name="jedi-master"></input>
-            <input name="name"></input>
-            <div name="steps">
-                <input name="step-duration"></input>
-                <input name="step-description"></input>
-                <input name="step-speed"></input>
-            </div>
+            <form>
+                <label>Trainer </label><input type="text" name="trainer">
+                <label>Name </label><input type="text" name="name">
+                <fieldset name="steps">
+                    <legend>Steps</legend>
+                    <label>Duration </label><input type="text" name="step-duration" data-field="duration">
+                    <label>Description </label><input type="text" name="step-description" data-field="description">
+                    <label>Speed </label><input type="text" name="step-speed" data-field="speed">
+                </fieldset>
+                <button id="save" onclick="trainingSave();">Save</button>
+            </form>
         </div>
 
         <ul name="trainings">
