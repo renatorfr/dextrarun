@@ -57,8 +57,13 @@ trainingSave = function() {
 
 writeTrainingData = function(userId, trainer, name, steps) {
     firebase.database().ref('trainings/' + userId).set({
-        trainer: trainer,
-        name: name,
-        steps: steps
-    });
+            trainer: trainer,
+            name: name,
+            steps: steps
+        }).then(function() {
+            alert('Synchronization succeeded');
+        })
+        .catch(function(error) {
+            alert('Synchronization failed: ' + error);
+        });;
 }
