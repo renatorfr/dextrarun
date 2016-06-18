@@ -2,6 +2,12 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue-light_green.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/0.4.0/firebase-ui-auth.js"></script>
@@ -16,32 +22,67 @@
 </head>
 
 <body>
-    <h1>Welcome to Dextra Run</h1>
-    <div id="user-info">
-        <img name="photo" src=""></img>
-        </br>
-        <p name="name"></p>
-        <p name="email"></p>
-    </div>
-
-    <div id="body-main">
-        <a name="create" href="" onclick="trainingCreateClick(); return false;">Create training</a>
-        <div id="training-new" style="display: none;">
-            <form>
-                <label>Trainer </label><input type="text" name="trainer">
-                <label>Name </label><input type="text" name="name">
-                <fieldset name="steps">
-                    <legend>Steps</legend>
-                    <label>Duration </label><input type="text" name="step-duration" data-field="duration">
-                    <label>Description </label><input type="text" name="step-description" data-field="description">
-                    <label>Speed </label><input type="text" name="step-speed" data-field="speed">
-                </fieldset>
-                <button id="save" onclick="trainingSave();return false;">Save</button>
-            </form>
+    <!-- No header, and the drawer stays open on larger screens (fixed drawer). -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Home</a>
+                <a class="mdl-navigation__link" href="">Trainings</a>
+                <a class="mdl-navigation__link" href="">Racers</a>
+            </nav>
         </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <h1>Welcome to Dextra Run</h1>
+                <div id="user-info">
+                    <img name="photo" src=""></img>
+                    </br>
+                    <p name="name"></p>
+                    <p name="email"></p>
+                </div>
 
-        <ul name="trainings">
-        </ul>
+                <div id="body-main">
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="trainingCreateClick();">
+                        <i class="material-icons">add</i>
+                    </button>
+                    <div id="training-new" style="display: none;">
+                        <form action="#">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="trainer" name="trainer">
+                                <label class="mdl-textfield__label" for="trainer">Trainer...</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="name" name="name">
+                                <label class="mdl-textfield__label" for="name">Name...</label>
+                            </div>
+                            <fieldset name="steps">
+                                <legend>Steps</legend>
+
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="step-duration" name="step-duration" data-field="duration">
+                                    <label class="mdl-textfield__label" for="step-duration">Duration...</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="step-description" name="step-description" data-field="description">
+                                    <label class="mdl-textfield__label" for="step-description">Description...</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="step-speed" name="step-speed" data-field="speed">
+                                    <label class="mdl-textfield__label" for="step-speed">Speed...</label>
+                                </div>
+                            </fieldset>
+                            <button id="save" onclick="trainingSave()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                Save
+                            </button>
+                        </form>
+                    </div>
+
+                    <ul name="trainings">
+                    </ul>
+                </div>
+            </div>
+        </main>
     </div>
 </body>
 
